@@ -1,0 +1,51 @@
+<div class="content">
+  <div class="row" style="margin-top: 10px;">
+    <div class="col-3">
+      
+      <mat-form-field appearance="fill">
+        <mat-label>Search Employee Id</mat-label>
+        <input matInput [formControl]="_ctEmployeeId" placeholder="id">
+        <button mat-icon-button matSuffix (click)="Find();">
+          <mat-icon>search</mat-icon>
+        </button>
+        <mat-hint>Employee Id</mat-hint>
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource">
+  
+      <!-- Position Column -->
+      <ng-container matColumnDef="employee_name">
+        <th mat-header-cell *matHeaderCellDef> Employee Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.employee_name}} </td>
+      </ng-container>
+  
+      <!-- Name Column -->
+      <ng-container matColumnDef="employee_age">
+        <th mat-header-cell *matHeaderCellDef> Age </th>
+        <td mat-cell *matCellDef="let element"> {{element.employee_age}} </td>
+      </ng-container>
+  
+      <!-- Weight Column -->
+      <ng-container matColumnDef="employee_salary">
+        <th mat-header-cell *matHeaderCellDef> Salary </th>
+        <td mat-cell *matCellDef="let element"> {{element.employee_salary}} </td>
+      </ng-container>
+  
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="employee_anual_salary">
+        <th mat-header-cell *matHeaderCellDef> Anual Salary </th>
+        <td mat-cell *matCellDef="let element"> {{element.employee_anual_salary}} </td>
+      </ng-container>
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                   showFirstLastButtons
+                   aria-label="Select page of periodic elements">
+    </mat-paginator>
+  </div>
+</div>
